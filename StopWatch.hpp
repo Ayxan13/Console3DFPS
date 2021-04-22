@@ -7,15 +7,15 @@
 
 class StopWatch final {
 private:
-	using clock = std::chrono::system_clock;
-	clock::time_point _lastChecked;
+    using clock = std::chrono::system_clock;
+    clock::time_point _lastChecked;
 public:
-	StopWatch()
-		: _lastChecked{ clock::now() }
-	{ }
+    StopWatch()
+        : _lastChecked{ clock::now() }
+    { }
 
-	[[nodiscard]] std::chrono::duration<float> Ellapsed() noexcept {
-		auto const now = clock::now();
-		return now - std::exchange(_lastChecked, now);
-	}
+    [[nodiscard]] std::chrono::duration<float> Ellapsed() noexcept {
+        auto const now = clock::now();
+        return now - std::exchange(_lastChecked, now);
+    }
 };
